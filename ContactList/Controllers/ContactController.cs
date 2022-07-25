@@ -25,7 +25,7 @@ namespace ContactList.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _contactService.Find();
+            var result = await _contactService.FindAll();
 
             if(result == null)
                 return NotFound();

@@ -3,6 +3,7 @@ using ContactList.Entity;
 using ContactList.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -30,7 +31,21 @@ namespace ContactList.Repositories
             {
                 throw new Exception($"Ocorreu um erro ao buscar pessoa. \n Exception: {ex.Message}");
             }
-
+        }
+        public async Task<List<Person>> FindAll()
+        {
+            try
+            {
+                var persons = await _context.Persons
+                    .AsNoTracking()
+                    .Include(c => c.Contacts)
+                    .ToListAsync();
+                return persons;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Ocorreu um erro ao buscar pessoa. \n Exception: {ex.Message}");
+            }
         }
         public async Task Insert(Person person)
         {

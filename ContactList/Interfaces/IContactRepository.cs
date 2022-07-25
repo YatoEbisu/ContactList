@@ -7,7 +7,5 @@ namespace ContactList.Interfaces
 {
     public interface IContactRepository : IBaseRepository<Contact>
     {
-        Task<List<Contact>> Find();
-
     }
 }

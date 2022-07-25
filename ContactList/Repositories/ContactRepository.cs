@@ -22,6 +22,7 @@ namespace ContactList.Repositories
             try
             {
                 var person = await _context.Contacts
+                    .AsNoTracking()
                     .Where(p => p.Id == id)
                     .FirstOrDefaultAsync();
                 return person;
@@ -31,7 +32,7 @@ namespace ContactList.Repositories
                 throw new Exception($"Ocorreu um erro ao buscar contato. \n Exception: {ex.Message}");
             }
         }
-        public async Task<List<Contact>> Find()
+        public async Task<List<Contact>> FindAll()
         {
             return await _context.Contacts.ToListAsync();
         }

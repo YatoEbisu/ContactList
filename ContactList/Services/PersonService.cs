@@ -1,6 +1,7 @@
 ﻿using ContactList.Entity;
 using ContactList.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ContactList.Services
@@ -17,6 +18,11 @@ namespace ContactList.Services
         {
             var person = _personRepository.Find(id);
             return person;
+        }
+        public Task<List<Person>> FindAll()
+        {
+            var persons = _personRepository.FindAll();
+            return persons;
         }
         public async Task Insert(Person person)
         {

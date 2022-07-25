@@ -4,6 +4,7 @@ using ContactList.Entity;
 using ContactList.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,6 +22,17 @@ namespace ContactList.Controllers
             _personService = personService;
             _contactService = contactService;
             _mapper = mapper;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var persons = await _personService.FindAll();
+            return Ok(new
+            {
+                success = true,
+                data = _mapper.Map<List<PersonDTO>>(persons)
+            });
         }
 
         [HttpGet("{id:guid}")]
