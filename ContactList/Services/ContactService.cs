@@ -19,11 +19,6 @@ namespace ContactList.Services
             return _contactRepository.Find(id);
         }
 
-        public Task<List<Contact>> FindAll()
-        {
-            return _contactRepository.FindAll();
-        }
-
         public async Task Insert(Contact contact)
         {
             contact.Id = Guid.NewGuid();

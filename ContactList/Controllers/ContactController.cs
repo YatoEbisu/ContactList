@@ -22,16 +22,6 @@ namespace ContactList.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var result = await _contactService.FindAll();
-
-            if(result == null)
-                return NotFound();
-            return Ok(result);
-        }
-
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] ContactReqUpdateDTO contactDTO)
         {
@@ -51,7 +41,7 @@ namespace ContactList.Controllers
                 return Ok(new
                 {
                     success = true,
-                    data = string.Empty
+                    data = Array.Empty<object>()
                 });
             }
             catch (Exception ex)
@@ -74,7 +64,7 @@ namespace ContactList.Controllers
                 return Ok(new
                 {
                     success = true,
-                    data = string.Empty
+                    data = Array.Empty<object>()
                 });
             }
             catch (Exception ex)

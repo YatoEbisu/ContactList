@@ -108,7 +108,7 @@ namespace ContactList.Controllers
                 return Ok(new
                 {
                     success = true,
-                    data = string.Empty
+                    data = Array.Empty<object>()
                 });
             }
             catch (Exception ex)
@@ -131,7 +131,7 @@ namespace ContactList.Controllers
                 return Ok(new
                 {
                     success = true,
-                    data = string.Empty
+                    data = Array.Empty<object>()
                 });
             }
             catch (Exception ex)

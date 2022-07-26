@@ -7,7 +7,6 @@ namespace ContactList.Interfaces
 {
     public interface IContactService
     {
-        Task<List<Contact>> FindAll();
         Task<Contact> Find(Guid id);
         Task Insert(Contact obj);
         Task Update(Contact obj);

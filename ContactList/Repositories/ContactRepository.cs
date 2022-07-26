@@ -32,10 +32,6 @@ namespace ContactList.Repositories
                 throw new Exception($"Ocorreu um erro ao buscar contato. \n Exception: {ex.Message}");
             }
         }
-        public async Task<List<Contact>> FindAll()
-        {
-            return await _context.Contacts.ToListAsync();
-        }
 
         public async Task Insert(Contact contact)
         {
